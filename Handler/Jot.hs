@@ -7,7 +7,7 @@ import Yesod.Form.Bootstrap3
 jotForm :: Form Text
 jotForm = renderBootstrap3 BootstrapBasicForm $
   areq textField
-       (withAutofocus $ withPlaceholder "Idea." "")
+       (withAutofocus $ withLargeInput $ withPlaceholder "Idea." "")
        Nothing
 getJotR :: Handler Html
 getJotR = do

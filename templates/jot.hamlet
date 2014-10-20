@@ -1,2 +1,3 @@
-<form method=post action=@{JotR}#form enctype=#{jotEnctype}>
-      ^{jotWidget}
+<div class="center-block text-center">
+  <form method=post action=@{JotR}#form enctype=#{jotEnctype}>
+    ^{jotWidget}
