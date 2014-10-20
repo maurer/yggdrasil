@@ -1,3 +1,9 @@
+Jot
+    body Text
+    created   UTCTime
+    completed UTCTime Maybe
+    deriving Typeable
+
 User
     ident Text
     password Text Maybe
