@@ -1,0 +1,32 @@
+# NOTE: These settings can be overridden by environment variables as well, in
+# particular:
+#
+#    PGHOST
+#    PGPORT
+#    PGUSER
+#    PGPASS
+#    PGDATABASE
+
+Default: &defaults
+  user: maurer
+  host: "" 
+  password: ""
+  database: yggdrasil
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: yggdrasil_test
+  <<: *defaults
+
+Staging:
+  database: yggdrasil_staging
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: yggdrasil_production
+  poolsize: 100
+  <<: *defaults
