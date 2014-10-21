@@ -2,6 +2,7 @@
 module Handler.Home where
 
 import Import
+import Language.Haskell.TH ( Exp(..) )
 import Yesod.Form.Bootstrap3
     ( BootstrapFormLayout (..), renderBootstrap3, withSmallInput )
 
@@ -21,6 +22,7 @@ getHomeR = do
         aDomId <- newIdent
         setTitle "Welcome To Yesod!"
         $(widgetFile "homepage")
+        $(fayFile' (ConE 'StaticR) "Home")
 
 postHomeR :: Handler Html
 postHomeR = do

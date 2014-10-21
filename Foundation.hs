@@ -17,6 +17,7 @@ import Settings (widgetFile, Extra (..))
 import Model
 import Text.Jasmine (minifym)
 import Text.Hamlet (hamletFile)
+import Yesod.Fay
 import Yesod.Core.Types (Logger)
 
 -- | The site argument for your application. This can be a good place to
@@ -29,6 +30,7 @@ data App = App
     , connPool :: Database.Persist.PersistConfigPool Settings.PersistConf -- ^ Database connection pool.
     , httpManager :: Manager
     , persistConfig :: Settings.PersistConf
+    , fayCommandHandler :: CommandHandler App
     , appLogger :: Logger
     }
 
@@ -112,6 +114,13 @@ instance Yesod App where
         development || level == LevelWarn || level == LevelError
 
     makeLogger = return . appLogger
+
+instance YesodJquery App
+instance YesodFay App where
+  fayRoute = FaySiteR
+  yesodFayCommand render command = do
+    master <- getYesod
+    fayCommandHandler master render command
 
 -- How to run database actions.
 instance YesodPersist App where
