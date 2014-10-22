@@ -12,5 +12,6 @@ import FFI
 #endif
 
 data Command = GetFib Int (Returns Int)
+             | FinishJot Int (Returns ())
     deriving (Read, Typeable, Data)
 

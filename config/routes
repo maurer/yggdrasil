@@ -7,3 +7,4 @@
 
 / HomeR GET POST
 /jot JotR GET POST
+/distill DistillR GET

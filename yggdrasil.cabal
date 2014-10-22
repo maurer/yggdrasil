@@ -24,6 +24,7 @@ library
                      Handler.Fay
                      Handler.Home
                      Handler.Jot
+                     Handler.Distill
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

@@ -68,7 +68,7 @@ widgetFile = (if development then widgetFileReload
 
 fayFile' :: Exp -> FayFile
 fayFile' staticR moduleName
-    | development = fayFileReload settings
+    | development = fayFileProd settings
     | otherwise   = fayFileProd settings
   where
     settings = (yesodFaySettings moduleName)
