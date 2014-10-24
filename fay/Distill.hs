@@ -1,51 +1,32 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE EmptyDataDecls    #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RebindableSyntax  #-}
 module Distill where
 
 import Prelude
 import Fay.FFI
-import Language.Fay.Yesod
+import Language.Fay.Yesod hiding (Text, fromString)
+import Fay.Text
 import SharedTypes
+import DOM
 
-data Element
-
-getElementById :: String -> Fay Element
-getElementById = ffi "document.getElementById(%1)"
-
-getElementsByTagName :: Element -> String -> Fay [Element]
-getElementsByTagName = ffi "%1.getElementsByTagName(%2)"
-
-getAttribute :: String -> Element -> Fay String
-getAttribute = ffi "%2[%1]"
-
-getProp :: String -> Element -> Fay String
-getProp = ffi "%2.%1"
-
-setInnerHTML :: Element -> String -> Fay ()
+setInnerHTML :: Element -> Text -> Fay ()
 setInnerHTML = ffi "%1.innerHTML=%2"
 
 onClick :: Element -> Fay () -> Fay ()
 onClick = ffi "%1.onclick=%2"
 
-onKeyUp :: Element -> Fay () -> Fay ()
-onKeyUp = ffi "%1.onkeyup=%2"
-
-alert :: String -> Fay ()
-alert = ffi "window.alert(%1)"
-
-parseInt :: String -> Fay Int
-parseInt = ffi "window.parseInt(%1, 10)"
-
-jsLog :: String -> Fay ()
+jsLog :: Text -> Fay ()
 jsLog = ffi "console.log(%1)"
 
 main :: Fay ()
 main = do
     jotViewer   <- getElementById "jotViewer"
     buttonGroup <- getElementById "jotButtons"
-    buttons     <- getElementsByTagName buttonGroup "button"
+    buttonList  <- children buttonGroup
+    let nl = nodeListToArray buttonList
     mapM_ (\b -> do
-        jsLog "button bind"
-        onClick b $ do bVal <- getAttribute "value" b
+        onClick b $ do bVal <- getValue b
                        setInnerHTML jotViewer bVal 
-      ) buttons
+      ) $ nodeListToArray buttonList

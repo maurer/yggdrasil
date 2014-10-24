@@ -74,6 +74,7 @@ fayFile' staticR moduleName
     settings = (yesodFaySettings moduleName)
         { yfsSeparateRuntime = Just ("static", staticR)
         , yfsExternal = Just ("static", staticR)
+        , yfsPackages = ["fay-jquery", "fay-dom", "fay-text"]
         }
 
 data Extra = Extra
