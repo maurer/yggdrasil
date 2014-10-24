@@ -4,4 +4,6 @@
       <button type="button" class="btn btn-default" value=#{jotId}>
         #{desc}
 <div id="jotViewer" class="col-xs-5">
+  <div id="jotBody">
+  <div id="jotCreated">
 <div id="jotAction" class="col-xs-5">

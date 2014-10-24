@@ -2,6 +2,7 @@
 {-# LANGUAGE EmptyDataDecls    #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RebindableSyntax  #-}
+{-# LANGUAGE PackageImports    #-}
 module Distill where
 
 import Prelude
@@ -10,6 +11,7 @@ import Language.Fay.Yesod hiding (Text, fromString)
 import Fay.Text
 import SharedTypes
 import DOM
+import Language.Fay.Time
 
 setInnerHTML :: Element -> Text -> Fay ()
 setInnerHTML = ffi "%1.innerHTML=%2"
@@ -22,13 +24,15 @@ jsLog = ffi "console.log(%1)"
 
 main :: Fay ()
 main = do
-    jotViewer   <- getElementById "jotViewer"
+    jotBody     <- getElementById "jotBody"
+    jotCreated  <- getElementById "jotCreated"
     buttonGroup <- getElementById "jotButtons"
     buttonList  <- children buttonGroup
-    let nl = nodeListToArray buttonList
     mapM_ (\b -> do
         onClick b $ do jotIdS <- getValue b
                        jotId  <- parseInt jotIdS
-                       call (GetJot jotId) $
-                         setInnerHTML jotViewer . body
+                       call (GetJot jotId) $ \jot -> do
+                         setInnerHTML jotBody    $ body jot
+                         localTime <- renderLocalTime $ created jot
+                         setInnerHTML jotCreated $ localTime
       ) $ nodeListToArray buttonList

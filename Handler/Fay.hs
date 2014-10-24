@@ -5,8 +5,6 @@ import Yesod.Fay
 import Fay.Convert (readFromFay)
 import Database.Persist.Sql
 
-import Data.Text (pack)
-
 fibs :: [Int]
 fibs = 0 : 1 : zipWith (+) fibs (drop 1 fibs)
 
@@ -18,8 +16,8 @@ onCommand render command =
         jot <- runDB $ get404 $ toSqlKey $ fromIntegral jotId
         render r $ FayJot 
           {body      = jotBody jot
-          ,created   = pack $ show $ jotCreated jot
-          ,completed = fmap (pack . show) $ jotCompleted jot
+          ,created   = jotCreated jot
+          ,completed = jotCompleted jot
           }
         
       Nothing               -> invalidArgs ["Invalid command"]

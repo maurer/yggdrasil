@@ -13,4 +13,5 @@ cabal.sandbox.config
 .DS_Store
 *.swp
 *.tix
+static/faygen*
 fay/Language/Fay/Yesod.hs
