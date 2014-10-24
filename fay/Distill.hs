@@ -27,6 +27,8 @@ main = do
     buttonList  <- children buttonGroup
     let nl = nodeListToArray buttonList
     mapM_ (\b -> do
-        onClick b $ do bVal <- getValue b
-                       setInnerHTML jotViewer bVal 
+        onClick b $ do jotIdS <- getValue b
+                       jotId  <- parseInt jotIdS
+                       call (GetJot jotId) $
+                         setInnerHTML jotViewer . body
       ) $ nodeListToArray buttonList
