@@ -1,0 +1,7 @@
+<div id="jotSelector" class="col-xs-2">
+  <div id="jotButtons" class="btn-group-vertical center-block">
+    $forall (jotId, desc) <- jotButtons
+      <button type="button" class="btn btn-default" value=#{jotId}>
+        #{desc}
+<div id="jotViewer" class="col-xs-5">
+<div id="jotAction" class="col-xs-5">

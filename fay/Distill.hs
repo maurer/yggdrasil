@@ -41,12 +41,11 @@ jsLog = ffi "console.log(%1)"
 
 main :: Fay ()
 main = do
-    alert "test"
-    jsLog 3 3
+    jotViewer   <- getElementById "jotViewer"
     buttonGroup <- getElementById "jotButtons"
     buttons     <- getElementsByTagName buttonGroup "button"
     mapM_ (\b -> do
         jsLog "button bind"
-        jsLog b
-        onClick b $ alert $ getAttribute "value" b
+        onClick b $ do bVal <- getAttribute "value" b
+                       setInnerHTML jotViewer bVal 
       ) buttons
