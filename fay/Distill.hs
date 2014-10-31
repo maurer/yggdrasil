@@ -27,6 +27,7 @@ main = do
     jotBody     <- getElementById "jotBody"
     jotCreated  <- getElementById "jotCreated"
     buttonGroup <- getElementById "jotButtons"
+    jotComplete <- getElementById "jotComplete"
     buttonList  <- children buttonGroup
     mapM_ (\b -> do
         onClick b $ do jotIdS <- getValue b
@@ -34,5 +35,7 @@ main = do
                        call (GetJot jotId) $ \jot -> do
                          setInnerHTML jotBody    $ body jot
                          localTime <- renderLocalTime $ created jot
-                         setInnerHTML jotCreated $ localTime
+                         setInnerHTML jotCreated  $ localTime
+                         setInnerHTML jotComplete $ "<button class=btn>Complete!</button>"
+                         jotCompBt
       ) $ nodeListToArray buttonList
