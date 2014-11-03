@@ -32,10 +32,17 @@ main = do
     mapM_ (\b -> do
         onClick b $ do jotIdS <- getValue b
                        jotId  <- parseInt jotIdS
+                       let reset = do
+                             setInnerHTML jotBody ""
+                             setInnerHTML jotCreated ""
+                             setInnerHTML jotComplete ""
                        call (GetJot jotId) $ \jot -> do
                          setInnerHTML jotBody    $ body jot
                          localTime <- renderLocalTime $ created jot
                          setInnerHTML jotCreated  $ localTime
                          setInnerHTML jotComplete $ "<button class=btn>Complete!</button>"
-                         onClick jotComplete $ call (CompleteJot jotId) return
+                         onClick jotComplete $
+                           call (CompleteJot jotId)
+                                (\_ -> do reset
+                                          removeChild buttonGroup b)
       ) $ nodeListToArray buttonList
