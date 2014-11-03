@@ -1,6 +1,7 @@
 module Handler.Fay where
 
 import Import
+import Data.Time
 import Yesod.Fay
 import Fay.Convert (readFromFay)
 import Database.Persist.Sql
@@ -20,4 +21,9 @@ onCommand render command =
           ,completed = jotCompleted jot
           }
         
+      Just (CompleteJot rawJotId r) -> do
+        let jotId :: (Key Jot) = toSqlKey $ fromIntegral rawJotId
+        t <- liftIO getCurrentTime
+        runDB $ update jotId [JotCompleted =. Just t]
+        render r ()
       Nothing               -> invalidArgs ["Invalid command"]

@@ -24,5 +24,6 @@ data FayJot = FayJot
 
 data Command = GetFib Int (Returns Int)
              | GetJot Int (Returns FayJot)
+             | CompleteJot Int (Returns ())
     deriving (Read, Typeable, Data)
 

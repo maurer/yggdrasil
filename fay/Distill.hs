@@ -37,5 +37,5 @@ main = do
                          localTime <- renderLocalTime $ created jot
                          setInnerHTML jotCreated  $ localTime
                          setInnerHTML jotComplete $ "<button class=btn>Complete!</button>"
-                         jotCompBt
+                         onClick jotComplete $ call (CompleteJot jotId) return
       ) $ nodeListToArray buttonList

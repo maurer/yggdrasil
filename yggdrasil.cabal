@@ -46,6 +46,7 @@ library
                 NoMonomorphismRestriction
                 RankNTypes
                 DeriveDataTypeable
+                ScopedTypeVariables
                 ViewPatterns
 
     build-depends: base                          >= 4          && < 5
