@@ -2,7 +2,7 @@
   <h3>Select a Jot
   <div id="jotButtons" class="btn-group-vertical center-block">
     $forall (jotId, desc) <- jotButtons
-      <button type="button" class="btn btn-default" value=#{jotId}>
+      <button type="button" class="btn btn-default ellipsis" value=#{jotId}>
         #{desc}
 <div id="jotViewer" class="col-xs-5">
   <h3>Jot Details
