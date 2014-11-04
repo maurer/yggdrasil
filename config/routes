@@ -5,6 +5,6 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/ HomeR GET POST
+/ HomeR GET
 /jot JotR GET POST
 /distill DistillR GET

@@ -22,8 +22,7 @@ data FayJot = FayJot
   , completed :: Maybe UTCTime
   } deriving (Typeable, Data, Show)
 
-data Command = GetFib Int (Returns Int)
-             | GetJot Int (Returns FayJot)
+data Command = GetJot Int (Returns FayJot)
              | CompleteJot Int (Returns ())
     deriving (Read, Typeable, Data)
 

@@ -4,7 +4,6 @@ import Import
 
 import Database.Persist.Sql
 import Language.Haskell.TH ( Exp(..) )
-import qualified Data.Text as T
 
 getDistillR :: Handler Html
 getDistillR = do
