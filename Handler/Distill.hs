@@ -12,5 +12,6 @@ getDistillR = do
   let jotButtons = map (\e -> (fromSqlKey $ entityKey e,
                                jotBody $ entityVal $ e)) jotEnts
   defaultLayout $ do
+    setTitle "Distill."
     $(widgetFile "distill")
     $(fayFile' (ConE 'StaticR) "Distill")
