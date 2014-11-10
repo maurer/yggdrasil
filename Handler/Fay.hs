@@ -16,7 +16,6 @@ onCommand render command =
           ,created   = jotCreated jot
           ,completed = jotCompleted jot
           }
-        
       Just (CompleteJot rawJotId r) -> do
         let jotId :: (Key Jot) = toSqlKey $ fromIntegral rawJotId
         t <- liftIO getCurrentTime
