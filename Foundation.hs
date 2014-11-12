@@ -70,7 +70,9 @@ instance Yesod App where
         -- you to use normal widget features in default-layout.
 
         pc <- widgetToPageContent $ do
-            addStylesheet $ StaticR css_bootstrap_css
+            addStylesheet $ StaticR css_bootstrap_min_css
+            getYesod >>= addScriptEither . urlJqueryJs
+            addScript $ StaticR js_bootstrap_min_js
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 
@@ -105,7 +107,8 @@ instance Yesod App where
 
     makeLogger = return . appLogger
 
-instance YesodJquery App
+instance YesodJquery App where
+  urlJqueryJs _ = Right "//code.jquery.com/jquery-2.0.0.min.js"
 instance YesodFay App where
   fayRoute = FaySiteR
   yesodFayCommand render command = do

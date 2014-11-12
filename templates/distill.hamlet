@@ -6,10 +6,26 @@
         #{desc}
 <div id="jotViewer" class="col-xs-5">
   <h3>Jot Details
-  <h4>Body
-  <div id="jotBody">
-  <h4>Creation
-  <div id="jotCreated">
-<div id="jotAction" class="col-xs-5">
+  <div id="viewer">
+    <h4>Body
+    <div id="jotBody">
+    <h4>Creation
+    <div id="jotCreated">
+<div id="jotResolution" class="col-xs-5">
   <h3>Resolution
-  <div id="jotComplete">
+  <div id="resolution" class="tabbable">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active" role="presentation">
+        <a href="#directResolution" data-toggle="tab">Direct
+      <li role="presentation">
+        <a href="#taskResolution" data-toggle="tab">Task
+    <div id="jotActionTabs" class="tab-content">
+      <div id="directResolution" class="tab-pane active">
+        <button type="button" class="btn btn-submit" id="jotComplete">
+          Complete!
+      <div id="taskResolution" class="tab-pane">
+        <div class="form-group">
+          <label for="goal">Goal:
+          <input type="text" class="form-control" id="goal">
+        <button type="button" class="btn btn-submit" id="jotTask">
+          Create Task
