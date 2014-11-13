@@ -17,7 +17,6 @@ import qualified Database.Persist
 import Database.Persist.Sql (runMigration)
 import Database.Persist.Postgresql (createPostgresqlPool, pgConnStr, pgPoolSize)
 import Network.HTTP.Client.Conduit (newManager)
-import Yesod.Fay (getFaySite)
 import Control.Monad.Logger (runLoggingT)
 import System.Log.FastLogger (newStdoutLoggerSet, defaultBufSize)
 import Network.Wai.Logger (clockDateCacher)
@@ -26,7 +25,6 @@ import Yesod.Core.Types (loggerSet, Logger (Logger))
 
 -- Import all relevant handler modules here.
 -- Don't forget to add new modules to your cabal file!
-import Handler.Fay
 import Handler.Home
 import Handler.Jot
 import Handler.Distill
@@ -78,7 +76,6 @@ makeFoundation conf = do
             , connPool = p
             , httpManager = manager
             , persistConfig = dbconf
-            , fayCommandHandler = onCommand
             , appLogger = logger
             }
         tempFoundation = mkFoundation $ error "connPool forced in tempFoundation"

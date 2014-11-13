@@ -13,4 +13,3 @@ getDistillR = do
   defaultLayout $ do
     setTitle "Distill."
     $(widgetFile "distill")
-    $(fayFile' (ConE 'StaticR) "Distill")

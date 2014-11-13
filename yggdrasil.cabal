@@ -12,7 +12,7 @@ Flag library-only
     Default:       False
 
 library
-    hs-source-dirs: ., fay-shared
+    hs-source-dirs: .
     exposed-modules: Application
                      Foundation
                      Import
@@ -20,8 +20,6 @@ library
                      Settings
                      Settings.StaticFiles
                      Settings.Development
-                     SharedTypes
-                     Handler.Fay
                      Handler.Home
                      Handler.Jot
                      Handler.Distill
@@ -54,8 +52,6 @@ library
                  , yesod-core                    >= 1.4.0      && < 1.5
                  , yesod-static                  >= 1.4.0      && < 1.5
                  , yesod-form                    >= 1.4.0      && < 1.5
-                 , yesod-fay                     >= 0.5.0.1
-                 , fay                           >= 0.16
                  , bytestring                    >= 0.9        && < 0.11
                  , text                          >= 0.11       && < 2.0
                  , persistent                    >= 2.0        && < 2.2

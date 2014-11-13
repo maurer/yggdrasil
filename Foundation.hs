@@ -14,8 +14,9 @@ import Settings.StaticFiles
 import Settings (widgetFile, Extra (..))
 import Text.Jasmine (minifym)
 import Text.Hamlet (hamletFile)
-import Yesod.Fay
 import Yesod.Core.Types (Logger)
+import Model
+import Yesod.Form.Jquery
 
 -- | The site argument for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
@@ -27,7 +28,6 @@ data App = App
     , connPool :: Database.Persist.PersistConfigPool Settings.PersistConf -- ^ Database connection pool.
     , httpManager :: Manager
     , persistConfig :: Settings.PersistConf
-    , fayCommandHandler :: CommandHandler App
     , appLogger :: Logger
     }
 
@@ -109,11 +109,6 @@ instance Yesod App where
 
 instance YesodJquery App where
   urlJqueryJs _ = Right "//code.jquery.com/jquery-2.0.0.min.js"
-instance YesodFay App where
-  fayRoute = FaySiteR
-  yesodFayCommand render command = do
-    master <- getYesod
-    fayCommandHandler master render command
 
 -- How to run database actions.
 instance YesodPersist App where

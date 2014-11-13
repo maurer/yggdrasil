@@ -14,7 +14,6 @@ import           Model                as Import
 import           Settings             as Import
 import           Settings.Development as Import
 import           Settings.StaticFiles as Import
-import           SharedTypes          as Import
 
 #if __GLASGOW_HASKELL__ >= 704
 import           Data.Monoid          as Import
