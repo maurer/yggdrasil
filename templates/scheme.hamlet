@@ -2,14 +2,14 @@
   <h3>Unscheduled
   <div class="panel panel-default">
     <ul id="unscheduledTasks" class="panel-body taskList list-unstyled">
-      <li class="panel panel-info task">
+      <li class="panel panel-info task" value=3>
         <div class="panel-heading">Foo
         <div class="panel-info">Bardilkjlkj
 <div id="scheduled" class="col-xs-4">
   <h3>Scheduled
   <div class="panel panel-default">
     <ul id="scheduledTasks" class="panel-body taskList list-unstyled">
-      <li class="panel panel-info task">
+      <li class="panel panel-info task" value=4>
         <div class="panel-heading">Blab
         <div class="panel-info">Bar
 <div id="bonus" class="col-xs-4">

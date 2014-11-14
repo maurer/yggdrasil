@@ -1,3 +1,25 @@
+function submitSched(sched, bonus) {
+  if (bonus) {
+    alert("Bonus: " + sched)
+  } else {
+    alert("Scheduled: " + sched)
+  }  
+}
+
 $("#unscheduledTasks, #scheduledTasks, #bonusTasks").sortable({
   connectWith: ".taskList"
 }).disableSelection();
+
+$("#scheduledTasks").on("sortupdate", function(event, ui) {
+  sched = $("#scheduledTasks").children("li").map(function(_,elem) {
+            return elem.value
+          }).get();
+  submitSched(sched, false)
+});
+
+$("#bonusTasks").on("sortupdate", function(event, ui) {
+  sched = $("#bonusTasks").children("li").map(function(_,elem) {
+            return elem.value
+          }).get();
+  submitSched(sched, true)
+});
