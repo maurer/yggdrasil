@@ -25,6 +25,7 @@ library
                      Handler.Distill
                      Handler.Task
                      Handler.Strike
+                     Handler.Scheme
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

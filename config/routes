@@ -10,3 +10,4 @@
 /distill DistillR GET
 /task TaskR POST
 /strike StrikeR GET
+/scheme SchemeR GET

@@ -9,6 +9,8 @@
         <li>
           <a href="@{DistillR}">Distill
         <li>
+          <a href="@{SchemeR}">Scheme
+        <li>
           <a href="@{StrikeR}">Strike
 $maybe msg <- mmsg
   <div #message>#{msg}
