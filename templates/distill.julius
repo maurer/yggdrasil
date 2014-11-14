@@ -1,0 +1,56 @@
+function getJot(jotId, succ) {
+  $.ajax({
+  url: "/jot/" + jotId,
+  dataType: "json",
+  success: succ
+  })
+}
+
+function renderJot(jot) {
+  $('#jotBody').text(jot['body'])
+  $('#jotCreated').text(jot['created'])
+}
+
+function completeJot(jotId, succ) {
+  $.ajax({
+  url: "/jot/" + jotId + "/complete",
+  success: succ,
+  type: "post"
+  })
+}
+
+activeButton = null
+
+function selectJot() {
+  getJot(this.value, renderJot);
+  $(this).addClass("active");
+  $(this).siblings().removeClass("active");
+  activeButton=this
+}
+
+function finishJot() {
+  completeJot(activeButton.value, function () {
+    $(activeButton).remove()
+    $("#jotButtons").children(":first").trigger("click")
+  });
+}
+
+function createTask(goal, callback) {
+  $.ajax({
+  type: "POST",
+  url: "/task",
+  data: {goal: goal},
+  dataType: "json",
+  success: callback
+  })
+}
+
+function jotTask() {
+  createTask($("#goal").val(), function (_) {
+    finishJot()
+  });
+}
+
+$("#jotButtons").children("button").click(selectJot);
+$("#jotComplete").click(finishJot);
+$("#jotTask").click(jotTask);

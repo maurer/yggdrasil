@@ -10,4 +10,4 @@ postTaskR = do
   taskId <- runDB $ insert $ Task goal t Nothing
   selectRep $ do
     provideRep $ return $ object
-      [ "taskId" .= taskId]
+      [ "taskId" .= taskId ]
