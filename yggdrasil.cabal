@@ -24,6 +24,7 @@ library
                      Handler.Jot
                      Handler.Distill
                      Handler.Task
+                     Handler.Strike
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
