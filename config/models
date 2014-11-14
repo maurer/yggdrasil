@@ -9,3 +9,8 @@ Task
     created UTCTime
     completed UTCTime Maybe
     deriving Typeable
+
+Schedule
+    prio  Int
+    bonus Bool
+    task  TaskId

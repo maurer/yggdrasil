@@ -1,9 +1,11 @@
 function submitSched(sched, bonus) {
-  if (bonus) {
-    alert("Bonus: " + sched)
-  } else {
-    alert("Scheduled: " + sched)
-  }  
+  $.ajax({
+    url: "/schedule",
+    type: "post",
+    data: {bonus: bonus,
+           sched: sched
+          }
+  })
 }
 
 $("#unscheduledTasks, #scheduledTasks, #bonusTasks").sortable({
