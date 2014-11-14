@@ -8,6 +8,8 @@
           <a href="@{JotR}">Jot
         <li>
           <a href="@{DistillR}">Distill
+        <li>
+          <a href="@{StrikeR}">Strike
 $maybe msg <- mmsg
   <div #message>#{msg}
 <div class="container container-fluid">
