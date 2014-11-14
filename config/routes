@@ -8,3 +8,4 @@
 /jot/#JotId ReadJotR GET
 /jot/#JotId/complete CompleteJotR POST
 /distill DistillR GET
+/task TaskR POST

@@ -23,6 +23,7 @@ library
                      Handler.Home
                      Handler.Jot
                      Handler.Distill
+                     Handler.Task
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
