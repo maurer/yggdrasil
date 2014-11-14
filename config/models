@@ -9,7 +9,3 @@ Task
     created UTCTime
     completed UTCTime Maybe
     deriving Typeable
-
-JotTaskInspire
-    sourceJot JotId
-    inspiredTask TaskId
