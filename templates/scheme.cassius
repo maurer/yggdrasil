@@ -1,0 +1,5 @@
+.taskList
+  min-height: 9ex
+  margin-bottom: 0px
+.task
+  margin-bottom: 2ex

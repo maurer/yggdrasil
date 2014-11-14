@@ -1,0 +1,3 @@
+$("#unscheduledTasks, #scheduledTasks, #bonusTasks").sortable({
+  connectWith: ".taskList"
+}).disableSelection();
