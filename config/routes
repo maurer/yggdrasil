@@ -9,6 +9,7 @@
 /jot/#JotId/complete CompleteJotR POST
 /distill DistillR GET
 /task TaskR POST
+/task/#TaskId/complete TaskCompleteR POST
 /strike StrikeR GET
 /strike/#TaskId StrikeTaskR GET
 /scheme SchemeR GET

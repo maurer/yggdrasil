@@ -11,3 +11,8 @@ postTaskR = do
   selectRep $ do
     provideRep $ return $ object
       [ "taskId" .= taskId ]
+
+postTaskCompleteR :: TaskId -> Handler ()
+postTaskCompleteR taskId = do
+  t <- liftIO getCurrentTime
+  runDB $ update taskId [TaskCompleted =. Just t]

@@ -1,0 +1,15 @@
+function completeTask(taskId, succ) {
+  $.ajax({
+  url: "/task/" + taskId + "/complete",
+  success: succ,
+  type: "post"
+  })
+}
+
+function finishTask() {
+  completeTask(#{taskId}, function () {
+    window.location = "@{StrikeR}"
+  })
+}
+
+$("#taskComplete").click(finishTask)

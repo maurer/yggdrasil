@@ -27,3 +27,11 @@ infixr 5 <>
 (<>) :: Monoid m => m -> m -> m
 (<>) = mappend
 #endif
+
+import           Text.Julius
+import           Data.Aeson.Encode
+import           Database.Persist.Sql
+import           Data.Text
+
+instance (ToBackendKey SqlBackend a) => ToJavascript (Key a) where
+  toJavascript x = Javascript $ encodeToTextBuilder $ String $ pack $ show $ fromSqlKey x

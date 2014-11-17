@@ -16,6 +16,7 @@
       <div id="workTools" class="tab-pane active">
         Tools Here.
       <div id="workComplete" class="tab-pane">
-        Completion button here.
+        <button type="button" class="btn btn-submit" id="taskComplete">
+          Complete!
       <div id="workBlock" class="tab-pane">
         Block button here
