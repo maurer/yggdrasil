@@ -1,5 +1,5 @@
 <div id="taskDesciptor" class="col-xs-4">
-  <h3>Task
+  <h3>Task: #{taskTitle task}
   <div id="goal">
     #{taskCompletion task}
 <div id="taskWork" class="col-xs-8">

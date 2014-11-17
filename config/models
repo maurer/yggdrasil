@@ -5,6 +5,7 @@ Jot
     deriving Typeable
 
 Task
+    title Text
     completion Text
     created UTCTime
     completed UTCTime Maybe

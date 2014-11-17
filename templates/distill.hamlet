@@ -24,8 +24,12 @@
         <button type="button" class="btn btn-submit" id="jotComplete">
           Complete!
       <div id="taskResolution" class="tab-pane">
-        <div class="form-group">
-          <label for="goal">Goal:
-          <input type="text" class="form-control" id="goal">
-        <button type="button" class="btn btn-submit" id="jotTask">
-          Create Task
+        <form role="form">
+          <div class="form-group">
+            <label for="title">Title:
+            <input type="text" class="form-control" id="title">
+          <div class="form-group">
+            <label for="goal">Goal:
+            <textarea type="text" class="form-control" id="goal">
+          <button type="button" class="btn btn-submit" id="jotTask">
+            Create Task

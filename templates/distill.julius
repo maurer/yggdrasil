@@ -35,18 +35,21 @@ function finishJot() {
   });
 }
 
-function createTask(goal, callback) {
+function createTask(goal, title, callback) {
   $.ajax({
   type: "POST",
   url: "/task",
-  data: {goal: goal},
+  data: {goal: goal,
+         title: title},
   dataType: "json",
   success: callback
   })
 }
 
 function jotTask() {
-  createTask($("#goal").val(), function (_) {
+  createTask($("#goal").val(),
+             $("#title").val(),
+             function (_) {
     finishJot()
   });
 }
