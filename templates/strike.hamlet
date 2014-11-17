@@ -1,0 +1,5 @@
+<div id="menu" class="col-xs-12">
+  <div class="panel panel-default">
+    <ul id="scheduledTasks" class="panel-body taskList list-unstyled">
+      $forall task <- tasks
+        ^{taskPanel task}
