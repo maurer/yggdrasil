@@ -24,3 +24,11 @@ getStrikeR = do
   defaultLayout $ do
     setTitle "Strike."
     $(widgetFile "strike")
+
+getStrikeTaskR :: TaskId -> Handler Html
+getStrikeTaskR taskId = do
+  task <- runDB $ get404 taskId
+  let taskName = taskCompletion task
+  defaultLayout $ do
+    setTitle $ "Strike: " <> (toHtml taskName)
+    $(widgetFile "strikeTask")

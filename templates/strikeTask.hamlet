@@ -1,0 +1,21 @@
+<div id="taskDesciptor" class="col-xs-4">
+  <h3>Task
+  <div id="goal">
+    #{taskCompletion task}
+<div id="taskWork" class="col-xs-8">
+  <h3>Work
+  <div id="workArea" class="tabbable">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active" role="presentation">
+        <a href="#workTools" data-toggle="tab">Tools
+      <li role="presentation">
+        <a href="#workComplete" data-toggle="tab">Complete
+      <li role="presentation">
+        <a href="#workBlock" data-toggle="tab">Block
+    <div id="workTabs" class="tab-content">
+      <div id="workTools" class="tab-pane active">
+        Tools Here.
+      <div id="workComplete" class="tab-pane">
+        Completion button here.
+      <div id="workBlock" class="tab-pane">
+        Block button here

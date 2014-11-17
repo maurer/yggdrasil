@@ -1,0 +1,3 @@
+$(".task").click(function () {
+  window.location = "/strike/" + this.value
+})

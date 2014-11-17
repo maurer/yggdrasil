@@ -10,5 +10,6 @@
 /distill DistillR GET
 /task TaskR POST
 /strike StrikeR GET
+/strike/#TaskId StrikeTaskR GET
 /scheme SchemeR GET
 /schedule ScheduleR POST
