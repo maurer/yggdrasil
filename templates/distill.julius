@@ -35,6 +35,17 @@ function finishJot() {
   });
 }
 
+function shelveJot() {
+  $.ajax({
+  type: "post",
+  url: "/jot/" + activeButton.value + "/shelve",
+  success: function () {
+    $(activeButton).remove();
+    $("#jotButtons").children(":first").trigger("click")
+  }
+  })
+}
+
 function createTask(goal, title, callback) {
   $.ajax({
   type: "POST",
@@ -56,4 +67,5 @@ function jotTask() {
 
 $("#jotButtons").children("button").click(selectJot);
 $("#jotComplete").click(finishJot);
+$("#jotShelve").click(shelveJot);
 $("#jotTask").click(jotTask);

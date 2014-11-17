@@ -7,6 +7,7 @@
 /jot JotR GET POST
 /jot/#JotId ReadJotR GET
 /jot/#JotId/complete CompleteJotR POST
+/jot/#JotId/shelve JotShelveR POST
 /distill DistillR GET
 /task TaskR POST
 /task/#TaskId/complete TaskCompleteR POST

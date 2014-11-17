@@ -23,6 +23,8 @@
       <div id="directResolution" class="tab-pane active">
         <button type="button" class="btn btn-submit" id="jotComplete">
           Complete!
+        <button type="button" class="btn btn-submit" id="jotShelve">
+          Shelve.
       <div id="taskResolution" class="tab-pane">
         <form role="form">
           <div class="form-group">

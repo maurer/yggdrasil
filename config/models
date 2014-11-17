@@ -2,6 +2,7 @@ Jot
     body Text
     created   UTCTime
     completed UTCTime Maybe
+    shelved   UTCTime Maybe
     deriving Typeable
 
 Task

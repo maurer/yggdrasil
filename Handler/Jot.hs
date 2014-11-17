@@ -32,6 +32,11 @@ postCompleteJotR jotId = do
   t <- liftIO getCurrentTime
   runDB $ update jotId [JotCompleted =. Just t]
 
+postJotShelveR :: JotId -> Handler ()
+postJotShelveR jotId = do
+  t <- liftIO getCurrentTime
+  runDB $ update jotId [JotShelved =. Just t]
+
 postJotR :: Handler Html
 postJotR = do
   ((result, _), _) <- runFormPost jotForm
@@ -39,9 +44,10 @@ postJotR = do
     FormSuccess r -> runDB $ do
       t <- liftIO getCurrentTime
       insert_ $ Jot
-        { jotCreated = t
-        , jotBody = r
+        { jotCreated   = t
+        , jotBody      = r
         , jotCompleted = Nothing
+        , jotShelved   = Nothing
         }
     _ -> error "dunkd"
   getJotR
