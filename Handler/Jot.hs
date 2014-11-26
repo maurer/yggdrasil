@@ -10,15 +10,15 @@ jotForm = renderBootstrap3 BootstrapBasicForm $
        (withAutofocus $ withLargeInput $ withPlaceholder "Idea." "")
        Nothing
 
-getJotR :: Handler Html
-getJotR = do
+getNewJotR :: Handler Html
+getNewJotR = do
   (jotWidget, jotEnctype) <- generateFormPost jotForm
   defaultLayout $ do
     setTitle "Jot."
     $(widgetFile "jot")
 
-getReadJotR :: JotId -> Handler TypedContent
-getReadJotR jotId = do
+getJotR :: JotId -> Handler TypedContent
+getJotR jotId = do
   jot <- runDB $ get404 $ jotId
   selectRep $ do
     provideRep $ return $ object
@@ -26,19 +26,18 @@ getReadJotR jotId = do
       , "created"   .= jotCreated jot
       , "completed" .= jotCompleted jot
       ]
+deleteJotR :: JotId -> Handler ()
+deleteJotR jotId = do
+  t <- liftIO getCurrentTime
+  runDB $ update jotId [JotDeleted =. Just t]
 
 postCompleteJotR :: JotId -> Handler ()
 postCompleteJotR jotId = do
   t <- liftIO getCurrentTime
   runDB $ update jotId [JotCompleted =. Just t]
 
-postJotShelveR :: JotId -> Handler ()
-postJotShelveR jotId = do
-  t <- liftIO getCurrentTime
-  runDB $ update jotId [JotShelved =. Just t]
-
-postJotR :: Handler Html
-postJotR = do
+postNewJotR :: Handler Html
+postNewJotR = do
   ((result, _), _) <- runFormPost jotForm
   case result of
     FormSuccess r -> runDB $ do
@@ -47,7 +46,7 @@ postJotR = do
         { jotCreated   = t
         , jotBody      = r
         , jotCompleted = Nothing
-        , jotShelved   = Nothing
+        , jotDeleted   = Nothing
         }
     _ -> error "dunkd"
-  getJotR
+  getNewJotR

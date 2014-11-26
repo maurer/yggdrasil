@@ -15,5 +15,5 @@ getHomeR = do
     -- Do we have any jots available?
     incompleteJots <- runDB $ count [JotCompleted ==. Nothing]
     if incompleteJots == 0
-      then redirect JotR
+      then redirect NewJotR
       else redirect DistillR

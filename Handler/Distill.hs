@@ -8,7 +8,7 @@ import Language.Haskell.TH ( Exp(..) )
 getDistillR :: Handler Html
 getDistillR = do
   jotEnts  <- runDB $ selectList [JotCompleted ==. Nothing
-                                 ,JotShelved   ==. Nothing]
+                                 ,JotDeleted   ==. Nothing]
                                  [Asc JotCreated]
   let jotButtons = map (\e -> (fromSqlKey $ entityKey e,
                                jotBody $ entityVal $ e)) jotEnts

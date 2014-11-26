@@ -35,10 +35,10 @@ function finishJot() {
   });
 }
 
-function shelveJot() {
+function deleteJot() {
   $.ajax({
-  type: "post",
-  url: "/jot/" + activeButton.value + "/shelve",
+  type: "DELETE",
+  url: "/jot/" + activeButton.value,
   success: function () {
     $(activeButton).remove();
     $("#jotButtons").children(":first").trigger("click")
@@ -67,5 +67,5 @@ function jotTask() {
 
 $("#jotButtons").children("button").click(selectJot);
 $("#jotComplete").click(finishJot);
-$("#jotShelve").click(shelveJot);
+$("#jotDelete").click(deleteJot);
 $("#jotTask").click(jotTask);

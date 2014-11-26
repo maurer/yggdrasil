@@ -4,10 +4,9 @@
 /robots.txt RobotsR GET
 
 / HomeR GET
-/jot JotR GET POST
-/jot/#JotId ReadJotR GET
+/jot NewJotR GET POST
+/jot/#JotId JotR GET DELETE
 /jot/#JotId/complete CompleteJotR POST
-/jot/#JotId/shelve JotShelveR POST
 /distill DistillR GET
 /task TaskR POST
 /task/#TaskId/complete TaskCompleteR POST
