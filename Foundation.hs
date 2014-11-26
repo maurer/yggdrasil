@@ -71,9 +71,11 @@ instance Yesod App where
 
         pc <- widgetToPageContent $ do
             addStylesheet $ StaticR css_bootstrap_min_css
+            addStylesheet $ StaticR css_bootstrap_switch_min_css
             getYesod >>= addScriptEither . urlJqueryJs
             addScript $ StaticR js_jquery_ui_min_js
             addScript $ StaticR js_bootstrap_min_js
+            addScript $ StaticR js_bootstrap_switch_min_js
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 

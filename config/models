@@ -10,6 +10,12 @@ Task
     completion Text
     created UTCTime
     completed UTCTime Maybe
+    exec Bool
+    deriving Typeable
+
+TaskDependency
+    parent TaskId
+    child  TaskId
     deriving Typeable
 
 Schedule

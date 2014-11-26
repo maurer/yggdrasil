@@ -46,12 +46,13 @@ function deleteJot() {
   })
 }
 
-function createTask(goal, title, callback) {
+function createTask(goal, title, exec, callback) {
   $.ajax({
   type: "POST",
   url: "/task",
   data: {goal: goal,
-         title: title},
+         title: title,
+         exec: exec},
   dataType: "json",
   success: callback
   })
@@ -60,6 +61,7 @@ function createTask(goal, title, callback) {
 function jotTask() {
   createTask($("#goal").val(),
              $("#title").val(),
+             $("#exec").is(':checked'),
              function (_) {
     finishJot()
   });
@@ -69,3 +71,4 @@ $("#jotButtons").children("button").click(selectJot);
 $("#jotComplete").click(finishJot);
 $("#jotDelete").click(deleteJot);
 $("#jotTask").click(jotTask);
+$("#exec").bootstrapSwitch();

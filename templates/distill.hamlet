@@ -33,5 +33,8 @@
           <div class="form-group">
             <label for="goal">Goal:
             <textarea type="text" class="form-control" id="goal">
+          <div class="form-group">
+            <label for="exec">Complexity:
+            <input type="checkbox" id="exec" checked data-size="large" data-on-text="Executive" data-off-text="Action">
           <button type="button" class="btn btn-submit" id="jotTask">
             Create Task
