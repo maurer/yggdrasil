@@ -17,8 +17,3 @@ TaskDependency
     parent TaskId
     child  TaskId
     deriving Typeable
-
-Schedule
-    prio  Int
-    bonus Bool
-    task  TaskId

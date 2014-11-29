@@ -12,5 +12,3 @@
 /task/#TaskId/complete TaskCompleteR POST
 /strike StrikeR GET
 /strike/#TaskId StrikeTaskR GET
-/scheme SchemeR GET
-/schedule ScheduleR POST
