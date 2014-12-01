@@ -43,3 +43,9 @@ postTaskDelayR taskId = do
   delay <- runInputPost $ ireq intField "delay"
   let t' = t {utctDay = addDays delay (utctDay t)}
   runDB $ update taskId [TaskDelay =. Just t']
+
+postTaskJournalR :: TaskId -> Handler ()
+postTaskJournalR taskId = do
+  t <- liftIO getCurrentTime
+  entry <- runInputPost $ ireq textField "entry"
+  runDB $ insert_ $ TaskJournal taskId t entry

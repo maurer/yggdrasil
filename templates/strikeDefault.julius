@@ -1,0 +1,17 @@
+function recordEntry(entry, succ) {
+  $.ajax({
+  type: "POST",
+  url: "/task/" + #{taskId} + "/journal",
+  data: {entry: entry},
+  success: succ
+  })
+}
+
+function record() {
+  recordEntry($("#journalForm #entry").val(),
+              function () {
+                window.location = "@{StrikeR}"
+              })
+}
+
+$("#journalForm #record").click(record);

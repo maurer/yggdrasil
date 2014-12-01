@@ -14,7 +14,7 @@
         <a href="#workShelve" data-toggle="tab">Shelve
     <div id="workTabs" class="tab-content">
       <div id="workTools" class="tab-pane active">
-        ^{workWidget task taskId}
+        ^{workWidget task taskId entries}
       <div id="workComplete" class="tab-pane">
         <button type="button" class="btn btn-submit" id="taskComplete">
           Complete!

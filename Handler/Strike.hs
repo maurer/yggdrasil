@@ -7,6 +7,7 @@ import Data.Time
 import Control.Monad
 
 taskPanel task = $(widgetFile "taskPanel")
+journalPanel (Entity _ entry) = $(widgetFile "journalPanel")
 
 execChildren (Entity tid task) = do
   if taskExec task
@@ -29,14 +30,16 @@ getStrikeR = do
     setTitle "Strike."
     $(widgetFile "strike")
 
-workWidget task taskId =
+workWidget task taskId entries =
   if taskExec task
     then $(widgetFile "strikeExec")
-    else [whamlet|No tools.|]
+    else $(widgetFile "strikeDefault")
 
 getStrikeTaskR :: TaskId -> Handler Html
 getStrikeTaskR taskId = do
   task <- runDB $ get404 taskId
+  entries <- runDB $ selectList [TaskJournalParent ==. taskId]
+                                [Desc TaskJournalTime]
   defaultLayout $ do
     setTitle "Strike."
     $(widgetFile "strikeTask")

@@ -11,5 +11,6 @@
 /task TaskR POST
 /task/#TaskId/complete TaskCompleteR POST
 /task/#TaskId/delay TaskDelayR POST
+/task/#TaskId/journal TaskJournalR POST
 /strike StrikeR GET
 /strike/#TaskId StrikeTaskR GET

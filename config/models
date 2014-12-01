@@ -18,3 +18,8 @@ TaskDependency
     parent TaskId
     child  TaskId
     deriving Typeable
+
+TaskJournal
+    parent TaskId
+    time UTCTime
+    text Text

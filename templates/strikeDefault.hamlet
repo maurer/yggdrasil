@@ -1,0 +1,12 @@
+<form role="form" id="journalForm">
+  <div class="form-group">
+    <label for="entry">Journal:
+    <textarea class="form-control" rows=7 id="entry">
+  <button type="button" class="btn btn-submit" id="record">
+    Record
+
+<h4>Previous Entries
+<div class="well">
+  <ul>
+    $forall entry <- entries
+      ^{journalPanel entry}

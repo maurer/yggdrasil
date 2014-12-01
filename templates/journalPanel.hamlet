@@ -1,0 +1,3 @@
+<li class="panel panel-info">
+  <div class="panel-heading">#{show $ taskJournalTime entry}
+  <div class="panel-info">#{taskJournalText entry}
