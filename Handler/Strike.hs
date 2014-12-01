@@ -3,12 +3,18 @@ module Handler.Strike where
 import Import
 import Database.Persist.Sql
 import Data.Text (pack)
+import Data.Time
 
 taskPanel task = $(widgetFile "taskPanel")
 
 getStrikeR :: Handler Html
 getStrikeR = do
-  tasks <- runDB $ selectList [TaskCompleted ==. Nothing] [Asc TaskCreated]
+  t <- liftIO getCurrentTime
+  tasks <- runDB $ selectList ((TaskCompleted ==. Nothing) :
+                               ([TaskDelay ==. Nothing]
+                                ||. [TaskDelay <=. Just t])
+                              )
+                              [Asc TaskCreated]
   defaultLayout $ do
     setTitle "Strike."
     $(widgetFile "strike")

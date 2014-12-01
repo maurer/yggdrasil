@@ -15,6 +15,7 @@ postTaskR = do
     , taskCreated = t
     , taskCompleted = Nothing
     , taskExec = exec
+    , taskDelay = Nothing
     }
   selectRep $ do
     provideRep $ return $ object
@@ -24,3 +25,10 @@ postTaskCompleteR :: TaskId -> Handler ()
 postTaskCompleteR taskId = do
   t <- liftIO getCurrentTime
   runDB $ update taskId [TaskCompleted =. Just t]
+
+postTaskDelayR :: TaskId -> Handler ()
+postTaskDelayR taskId = do
+  t <- liftIO getCurrentTime
+  delay <- runInputPost $ ireq intField "delay"
+  let t' = t {utctDay = addDays delay (utctDay t)}
+  runDB $ update taskId [TaskDelay =. Just t']

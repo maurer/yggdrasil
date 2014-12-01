@@ -10,5 +10,6 @@
 /distill DistillR GET
 /task TaskR POST
 /task/#TaskId/complete TaskCompleteR POST
+/task/#TaskId/delay TaskDelayR POST
 /strike StrikeR GET
 /strike/#TaskId StrikeTaskR GET

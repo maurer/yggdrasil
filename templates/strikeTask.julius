@@ -6,10 +6,29 @@ function completeTask(taskId, succ) {
   })
 }
 
+function shelveTask(taskId, delay, succ) {
+  $.ajax({
+  url: "/task/" + taskId + "/delay",
+  success: succ,
+  type: "post",
+  data: {delay: delay}
+  })
+}
+
 function finishTask() {
   completeTask(#{taskId}, function () {
     window.location = "@{StrikeR}"
   })
 }
 
-$("#taskComplete").click(finishTask)
+function delayTask(days) {
+  return function () {
+    shelveTask(#{taskId}, days, function () {
+      window.location = "@{StrikeR}"
+    })
+  }
+}
+
+$("#taskComplete").click(finishTask);
+$("#taskSomeday").click(delayTask(60));
+$("#taskRemind").click(delayTask(7));

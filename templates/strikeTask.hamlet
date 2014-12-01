@@ -11,12 +11,15 @@
       <li role="presentation">
         <a href="#workComplete" data-toggle="tab">Complete
       <li role="presentation">
-        <a href="#workBlock" data-toggle="tab">Block
+        <a href="#workShelve" data-toggle="tab">Shelve
     <div id="workTabs" class="tab-content">
       <div id="workTools" class="tab-pane active">
         Tools Here.
       <div id="workComplete" class="tab-pane">
         <button type="button" class="btn btn-submit" id="taskComplete">
           Complete!
-      <div id="workBlock" class="tab-pane">
-        Block button here
+      <div id="workShelve" class="tab-pane">
+        <button type="button" class="btn btn-submit" id="taskSomeday">
+          Shelve
+        <button type="button" class="btn btn-submit" id="taskRemind">
+          Remind
