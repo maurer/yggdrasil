@@ -4,14 +4,14 @@
     $forall (jotId, desc) <- jotButtons
       <button type="button" class="btn btn-default ellipsis" value=#{jotId}>
         #{desc}
-<div id="jotViewer" class="col-xs-5">
+<div id="jotViewer" class="col-xs-4">
   <h3>Jot Details
   <div id="viewer">
     <h4>Body
     <div id="jotBody">
     <h4>Creation
     <div id="jotCreated">
-<div id="jotResolution" class="col-xs-5">
+<div id="jotResolution" class="col-xs-6">
   <h3>Resolution
   <div id="resolution" class="tabbable">
     <ul class="nav nav-tabs" role="tablist">
@@ -32,7 +32,7 @@
             <input type="text" class="form-control" id="title">
           <div class="form-group">
             <label for="goal">Goal:
-            <textarea type="text" class="form-control" id="goal">
+            <textarea type="text" rows=6 class="form-control" id="goal">
           <div class="form-group">
             <label for="exec">Complexity:
             <input type="checkbox" id="exec" checked data-size="large" data-on-text="Executive" data-off-text="Action">
