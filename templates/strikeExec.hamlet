@@ -1,0 +1,12 @@
+<form role="form" id="subTaskForm">
+  <div class="form-group">
+    <label for="title">Title:
+    <input type="text" class="form-control" id="title">
+  <div class="form-group">
+    <label for="goal">Goal:
+    <textarea type="text" class="form-control" id="goal">
+  <div class="form-group">
+    <label for="exec">Complexity:
+    <input type="checkbox" id="exec" data-on-text="Executive&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" data-off-text="Action">
+  <button type="button" class="btn btn-submit" id="subTask">
+    Create Subtask

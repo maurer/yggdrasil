@@ -19,6 +19,11 @@ getStrikeR = do
     setTitle "Strike."
     $(widgetFile "strike")
 
+workWidget task taskId =
+  if taskExec task
+    then $(widgetFile "strikeExec")
+    else [whamlet|No tools.|]
+
 getStrikeTaskR :: TaskId -> Handler Html
 getStrikeTaskR taskId = do
   task <- runDB $ get404 taskId

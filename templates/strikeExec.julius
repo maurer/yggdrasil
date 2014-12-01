@@ -1,0 +1,29 @@
+function createTask(goal, title, exec, callback) {
+  $.ajax({
+  type: "POST",
+  url: "/task",
+  data: {goal: goal,
+         title: title,
+         exec: exec,
+         parent: #{taskId}},
+  dataType: "json",
+  success: callback
+  })
+}
+
+function createSubTask() {
+  goal  = $("#subTaskForm #goal")
+  title = $("#subTaskForm #title")
+  exec  = $("#subTaskForm #exec")
+  createTask(goal.val(),
+             title.val(),
+             exec.is(':checked'),
+             function () {
+             goal.val('');
+             title.val('');
+             exec.bootstrapSwitch('state', false);
+             })
+}
+
+$("#subTaskForm #subTask").click(createSubTask);
+$("#subTaskForm #exec").bootstrapSwitch('state', false);
