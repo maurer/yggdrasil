@@ -16,8 +16,11 @@
       <div id="workTools" class="tab-pane active">
         ^{workWidget task taskId entries}
       <div id="workComplete" class="tab-pane">
-        <button type="button" class="btn btn-submit" id="taskComplete">
-          Complete!
+        <div class="input-group">
+          <input type="text" class="form-control" id="evidence">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-submit" id="taskComplete">
+              Complete!
       <div id="workShelve" class="tab-pane">
         <button type="button" class="btn btn-submit" id="taskSomeday">
           Shelve

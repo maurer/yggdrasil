@@ -12,6 +12,7 @@ Task
     completed UTCTime Maybe
     exec Bool
     delay UTCTime Maybe
+    evidence Text Maybe
     deriving Typeable
 
 TaskDependency

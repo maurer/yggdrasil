@@ -1,8 +1,11 @@
-function completeTask(taskId, succ) {
+function completeTask(taskId, ev, succ) {
+  data = {};
+  if (ev != "") {data['evidence'] = ev} 
   $.ajax({
   url: "/task/" + taskId + "/complete",
   success: succ,
-  type: "post"
+  type: "post",
+  data: data
   })
 }
 
@@ -16,7 +19,8 @@ function shelveTask(taskId, delay, succ) {
 }
 
 function finishTask() {
-  completeTask(#{taskId}, function () {
+  completeTask(#{taskId}, $("#workComplete #evidence").val(),
+               function () {
     window.location = "@{StrikeR}"
   })
 }

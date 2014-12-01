@@ -25,6 +25,7 @@ postTaskR = do
       , taskCompleted = Nothing
       , taskExec = exec
       , taskDelay = Nothing
+      , taskEvidence = Nothing
       }
     _ <- parentAction tid
     return tid
@@ -35,7 +36,11 @@ postTaskR = do
 postTaskCompleteR :: TaskId -> Handler ()
 postTaskCompleteR taskId = do
   t <- liftIO getCurrentTime
-  runDB $ update taskId [TaskCompleted =. Just t]
+  ev <- runInputPost $ iopt textField "evidence"
+  let evUpdate = case ev of
+        Just evidence -> [TaskEvidence =. Just evidence]
+        Nothing -> []
+  runDB $ update taskId $ (TaskCompleted =. Just t) : evUpdate
 
 postTaskDelayR :: TaskId -> Handler ()
 postTaskDelayR taskId = do
