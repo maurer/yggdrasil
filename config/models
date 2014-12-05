@@ -7,7 +7,7 @@ Jot
 
 Task
     title Text
-    completion Text
+    completion Textarea
     created UTCTime
     completed UTCTime Maybe
     exec Bool

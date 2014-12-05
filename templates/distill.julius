@@ -7,8 +7,8 @@ function getJot(jotId, succ) {
 }
 
 function renderJot(jot) {
-  $('#jotBody').text(jot['body'])
-  $('#jotCreated').text(jot['created'])
+  $('#jotBody').multiline(jot['body'])
+  $('#jotCreated').multiline(jot['created'])
 }
 
 function completeJot(jotId, succ) {

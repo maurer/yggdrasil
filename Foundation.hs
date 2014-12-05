@@ -76,6 +76,7 @@ instance Yesod App where
             addScript $ StaticR js_jquery_ui_min_js
             addScript $ StaticR js_bootstrap_min_js
             addScript $ StaticR js_bootstrap_switch_min_js
+            addScript $ StaticR js_yggdrasil_js
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 

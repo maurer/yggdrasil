@@ -6,7 +6,7 @@ import Database.Persist.Sql
 
 postTaskR :: Handler TypedContent
 postTaskR = do
-  goal    <- runInputPost $ ireq textField "goal"
+  goal    <- runInputPost $ ireq textareaField "goal"
   title   <- runInputPost $ ireq textField "title"
   exec    <- runInputPost $ ireq boolField "exec"
   mParent <- fmap (fmap toSqlKey) $ runInputPost $ iopt intField "parent"
