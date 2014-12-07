@@ -15,10 +15,10 @@ import Network.Wai.Middleware.RequestLogger
 import qualified Network.Wai.Middleware.RequestLogger as RequestLogger
 import qualified Database.Persist
 import Database.Persist.Sql (runMigration)
-import Database.Persist.Postgresql (createPostgresqlPool, pgConnStr, pgPoolSize)
 import Network.HTTP.Client.Conduit (newManager)
 import Control.Monad.Logger (runLoggingT)
 import System.Log.FastLogger (newStdoutLoggerSet, defaultBufSize)
+import Database.Persist.Sqlite (createSqlitePool, sqlDatabase, sqlPoolSize)
 import Network.Wai.Logger (clockDateCacher)
 import Data.Default (def)
 import Yesod.Core.Types (loggerSet, Logger (Logger))
@@ -64,7 +64,7 @@ makeFoundation :: AppConfig DefaultEnv Extra -> IO App
 makeFoundation conf = do
     manager <- newManager
     s <- staticSite
-    dbconf <- withYamlEnvironment "config/postgresql.yml" (appEnv conf)
+    dbconf <- withYamlEnvironment "config/sqlite.yml" (appEnv conf)
               Database.Persist.loadConfig >>=
               Database.Persist.applyEnv
 
@@ -84,7 +84,7 @@ makeFoundation conf = do
         logFunc = messageLoggerSource tempFoundation logger
 
     p <- flip runLoggingT logFunc
-       $ createPostgresqlPool (pgConnStr dbconf) (pgPoolSize dbconf)
+       $ createSqlitePool (sqlDatabase dbconf) (sqlPoolSize dbconf)
     let foundation = mkFoundation p
 
     -- Perform database migration using our application's logging settings.
