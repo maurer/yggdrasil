@@ -23,4 +23,4 @@ TaskDependency
 TaskJournal
     parent TaskId
     time UTCTime
-    text Text
+    text Textarea

@@ -52,5 +52,5 @@ postTaskDelayR taskId = do
 postTaskJournalR :: TaskId -> Handler ()
 postTaskJournalR taskId = do
   t <- liftIO getCurrentTime
-  entry <- runInputPost $ ireq textField "entry"
+  entry <- runInputPost $ ireq textareaField "entry"
   runDB $ insert_ $ TaskJournal taskId t entry
