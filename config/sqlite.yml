@@ -1,20 +1,20 @@
 Default: &defaults
-  database: ysql.sqlite3
+  database: yggdrasil.sqlite3
   poolsize: 10
 
 Development:
   <<: *defaults
 
 Testing:
-  database: ysql_test.sqlite3
+  database: yggdrasil_test.sqlite3
   <<: *defaults
 
 Staging:
-  database: ysql_staging.sqlite3
+  database: yggdrasil_staging.sqlite3
   poolsize: 100
   <<: *defaults
 
 Production:
-  database: ysql_production.sqlite3
+  database: /var/yggdrasil/yggdrasil_production.sqlite3
   poolsize: 100
   <<: *defaults

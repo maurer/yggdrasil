@@ -26,7 +26,7 @@ type PersistConf = SqliteConf
 -- | The location of static files on your system. This is a file system
 -- path. The default value works properly with your scaffolded site.
 staticDir :: FilePath
-staticDir = "static"
+staticDir = "/var/yggdrasil/static"
 
 -- | The base URL for your static files. As you can see by the default
 -- value, this can simply be "static" appended to your application root.

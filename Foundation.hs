@@ -57,7 +57,7 @@ instance Yesod App where
     -- default session idle timeout is 120 minutes
     makeSessionBackend _ = fmap Just $ defaultClientSessionBackend
         120    -- timeout in minutes
-        "config/client_session_key.aes"
+        "/var/yggdrasil/client_session_key.aes"
 
     defaultLayout widget = do
         master <- getYesod
